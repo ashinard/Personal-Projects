@@ -1,91 +1,47 @@
-import java.util.Random;
+import java.util.*;
 public class diceBag 
 {
+    public static void main(String[] args) 
+    {
+        int x = 0;
+        d4 four = new d4();
+        d6 six = new d6();
+        d8 eight = new d8();
+        d10 ten = new d10();
+        d12 twelve = new d12();
+        d20 twenty = new d20();
+        percentile hundred = new percentile();
+        Scanner which = new Scanner(System.in);
 
-    int total;
-    int currentRoll;
-    Random rng = new Random();
+        Dice.display();
 
-    public int d4(int x)
-    {
-        System.out.println("Results:");
-        total = 0;
-        for(int i = 0; i < x; i++)
+        while(true)
         {
-            currentRoll = rng.nextInt(4) + 1;
-            System.out.println(currentRoll);
-            total += currentRoll;
-        }
-        return total;
-    }
-    
-    public int d6(int x)
-    {
-        System.out.println("Results:");
-        total = 0;
-        for(int i = 0; i < x; i++)
-        {
-            currentRoll = rng.nextInt(6) + 1;
-            System.out.println(currentRoll);
-            total += currentRoll;
-        }
-        return total;
-    }
-    
-    public int d8(int x)
-    {
-        System.out.println("Results:");
-        total = 0;
-        for(int i = 0; i < x; i++)
-        {
-            currentRoll = rng.nextInt(8) + 1;
-            System.out.println(currentRoll);
-            total += currentRoll;
-        }
-        return total;
-    }
+            x = which.nextInt();
 
-    public int d10(int x)
-    {
-        System.out.println("Results:");
-        total = 0;
-        for(int i = 0; i < x; i++)
-        {
-            currentRoll = rng.nextInt(10) + 1;
-            System.out.println(currentRoll);
-            total += currentRoll;
-        }
-        return total;
-    }
-    
-    public int d12(int x)
-    {
-        System.out.println("Results:");
-        total = 0;
-        for(int i = 0; i < x; i++)
-        {
-            currentRoll = rng.nextInt(12) + 1;
-            System.out.println(currentRoll);
-            total += currentRoll;
-        }
-        return 0;
-    }
+            switch(x)
+            {
+                case 1: System.out.println(four.roll());
+                        break;
+                case 2: System.out.println(six.roll());
+                        break;
+                case 3: System.out.println(eight.roll());
+                        break;
+                case 4: System.out.println(ten.roll());
+                        break;
+                case 5: System.out.println(twelve.roll());
+                        break;
+                case 6: twenty.roll();
+                        break;
+                case 7: System.out.println(hundred.roll());
+                        break;
+                case 0: which.close();
+                        System.exit(0);
+                default:System.out.println("Pick a real option.");
+            }
 
-    public int d20(int x)
-    {
-        System.out.println("Results:");
-        for(int i = 0; i < x; i++)
-        {
-            currentRoll = rng.nextInt(20) + 1;
-            System.out.println(currentRoll);
+            Dice.display();
         }
-        return x;
-    }
-    
-    public int percentile()
-    {
-        total = rng.nextInt(9) * 10;
-        System.out.println(total);
-        return total;
     }
 }
+
